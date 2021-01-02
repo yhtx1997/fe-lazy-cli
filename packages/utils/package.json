@@ -1,6 +1,6 @@
 {
   "name": "@fe-lazy-cli/utils",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "fe-lazy-cli/utils",
   "author": "gengshaojing <gengshaojing@zhiketong.cn>",
   "homepage": "",
@@ -14,7 +14,7 @@
     "lib"
   ],
   "publishConfig": {
-    "registry": "http://registry.npmjs.org/"
+    "access": "public"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
