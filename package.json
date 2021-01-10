@@ -3,8 +3,8 @@
   "version": "1.0.3",
   "description": "",
   "bin": {
-    "FE": "index.js",
-    "fe": "index.js"
+    "FE": "core/core/lib/index.js",
+    "fe": "core/core/lib/index.js"
   },
   "main": "index.js",
   "scripts": {
