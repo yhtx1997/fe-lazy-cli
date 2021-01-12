@@ -3,8 +3,8 @@
   "version": "1.0.3",
   "description": "",
   "bin": {
-    "FE": "./core/cli/bin/index.js",
-    "fe": "./core/cli/bin/index.js"
+    "fe": "./core/cli/bin/index.js",
+    "FE": "./core/cli/bin/index.js"
   },
   "main": "index.js",
   "scripts": {

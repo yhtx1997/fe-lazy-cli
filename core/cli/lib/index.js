@@ -10,11 +10,13 @@ const semver = require('semver');
 const colors = require('colors/safe');
 const userHome = require('user-home');
 const pathExists = require('path-exists').sync;
+const commander = require('commander');
 
 // 自包
 const log = require('@fe-lazy-cli/log');
-const pkg = require('../package.json');
+const pkg = require('../../../package.json');
 const { getNpmSemverVersion } = require('@fe-lazy-cli/get-npm-info');
+const commands = require('@fe-lazy-cli/commands');
 
 const constant = require('./const');
 
@@ -23,8 +25,6 @@ let args = null,
 
 async function core() {
     try {
-        // 检查包版本号
-        checkPkgVersion();
         // 检查 node 版本号
         checkNodeVersion();
         // root 降级
@@ -37,6 +37,8 @@ async function core() {
         checkEnv();
         // 检查更新
         await checkGlobalUpdate();
+        // 命令
+        commands(pkg);
     } catch (error) {
         log.error(colors.red(error.message));   
     }
@@ -46,7 +48,7 @@ async function core() {
 async function checkGlobalUpdate() {
     const currentVersion = pkg.version;
     const npmName = pkg.name;
-    const lastVersion = await getNpmSemverVersion(currentVersion, 'webpack-cli');
+    const lastVersion = await getNpmSemverVersion(currentVersion, npmName);
     if (lastVersion && semver.gt(lastVersion, currentVersion)) {
         log.warn(colors.yellow(`最新版本号：${lastVersion} 请使用 npm install -g ${npmName} 更新版本！ 获得更好的使用体验！`));
     }
@@ -105,10 +107,6 @@ function checkNodeVersion() {
     const currentNodeVersion = process.version;
     const lowestVersion = constant.LOWEST_NODE_VERSION;
     if(semver.lt(currentNodeVersion, lowestVersion)) {
-        throw new Error( colors.red(`需要安装 ${lowestVersion} 及以上版本的 node`));
+        throw new Error(colors.red(`需要安装 ${lowestVersion} 及以上版本的 node`));
     }
-}
-
-function checkPkgVersion() {
-    log.info(`当前版本号：${pkg.version}`);
 }

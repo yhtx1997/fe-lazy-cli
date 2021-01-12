@@ -20,10 +20,12 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
+    "@fe-lazy-cli/commands": "file:../../commands/commands",
+    "@fe-lazy-cli/get-npm-info": "file:../../utils/get-npm-info",
     "@fe-lazy-cli/log": "file:../../utils/log",
     "@fe-lazy-cli/utils": "file:../../utils/utils",
-    "@fe-lazy-cli/get-npm-info": "file:../../utils/get-npm-info",
     "colors": "^1.4.0",
+    "commander": "^6.2.1",
     "dotenv": "^8.2.0",
     "import-local": "^3.0.2",
     "minimist": "^1.2.5",
