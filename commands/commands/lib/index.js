@@ -20,6 +20,7 @@ function command(pkg) {
     regCommand();
     regAddCommand();
 
+    // 对未知命令进行提示
     program.on('command:*',(arg) => {
         let commands = program.commands.map(item => {
             return {
